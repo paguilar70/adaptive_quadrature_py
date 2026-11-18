@@ -55,3 +55,10 @@ pieces separately.
 Reversed limits are supported: `integrate(f, b, a)` returns the negation of
 `integrate(f, a, b)`. An empty interval (`a == b`) returns `0.0` without calling
 `f`.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
